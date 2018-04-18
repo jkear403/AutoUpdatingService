@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Reflection;
+using System.Diagnostics;
+using Interfaces;
+using System.IO;
+
+namespace Plugin.One
+{
+    public class One : IPlugin
+    {
+
+        public void Start()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fvi.FileVersion;
+            System.Threading.Thread.Sleep(30000);
+            //File.AppendAllText(@"C:\Users\JonKear\Documents\visual studio 2013\Projects\AutoUpdatingService\Output\Plugins\Plugin1.txt", "I am Plugin One running version " + version);
+            Console.WriteLine("I am Plugin One running version " + version);
+        }
+
+        public void Stop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Restart()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
